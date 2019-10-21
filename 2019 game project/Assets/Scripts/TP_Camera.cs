@@ -7,6 +7,7 @@ public class TP_Camera : MonoBehaviour
 
     public static TP_Camera Instance;
     public Transform TargetLookAt;
+    public float SlowMotionSpeed = 0.25f;
     public float Distance = 5f;
     public float DistanceMin = 3f;
     public float DistanceMax = 10;
@@ -65,6 +66,8 @@ public class TP_Camera : MonoBehaviour
         } while (CheckIfOccluded(count));
         
         UpdatePosition();
+
+        TimeSlowDown();
 
     }
 
@@ -142,22 +145,22 @@ public class TP_Camera : MonoBehaviour
 
         Helper.ClipPlanePoints clipPlanePoints = Helper.ClipPlaneAtNear(to);
 
-        if (Physics.Linecast(from, clipPlanePoints.UpperLeft, out hitInfo) && hitInfo.collider.tag != "Player")
+        if (Physics.Linecast(from, clipPlanePoints.UpperLeft, out hitInfo) && hitInfo.collider.tag != "Player" && hitInfo.collider.tag != "TriggerBox")
             nearDistance = hitInfo.distance;
 
-        if (Physics.Linecast(from, clipPlanePoints.LowerLeft, out hitInfo) && hitInfo.collider.tag != "Player")
+        if (Physics.Linecast(from, clipPlanePoints.LowerLeft, out hitInfo) && hitInfo.collider.tag != "Player" && hitInfo.collider.tag != "TriggerBox")
             if(hitInfo.distance < nearDistance || nearDistance == -1)
                 nearDistance = hitInfo.distance;
 
-        if (Physics.Linecast(from, clipPlanePoints.UpperRight, out hitInfo) && hitInfo.collider.tag != "Player")
+        if (Physics.Linecast(from, clipPlanePoints.UpperRight, out hitInfo) && hitInfo.collider.tag != "Player" && hitInfo.collider.tag != "TriggerBox")
             if (hitInfo.distance < nearDistance || nearDistance == -1)
                 nearDistance = hitInfo.distance;
 
-        if (Physics.Linecast(from, clipPlanePoints.LowerRight, out hitInfo) && hitInfo.collider.tag != "Player")
+        if (Physics.Linecast(from, clipPlanePoints.LowerRight, out hitInfo) && hitInfo.collider.tag != "Player" && hitInfo.collider.tag != "TriggerBox")
             if (hitInfo.distance < nearDistance || nearDistance == -1)
                 nearDistance = hitInfo.distance;
 
-        if (Physics.Linecast(from, to + (transform.forward * Camera.main.nearClipPlane), out hitInfo) && hitInfo.collider.tag != "Player")
+        if (Physics.Linecast(from, to + (transform.forward * Camera.main.nearClipPlane), out hitInfo) && hitInfo.collider.tag != "Player" && hitInfo.collider.tag != "TriggerBox")
             if (hitInfo.distance < nearDistance || nearDistance == -1)
                 nearDistance = hitInfo.distance;
 
@@ -235,5 +238,15 @@ public class TP_Camera : MonoBehaviour
         }
 
         myCamera.TargetLookAt = targetLookAt.transform;
+    }
+
+    public void TimeSlowDown()
+    {
+        Time.timeScale = 1;
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            Time.timeScale = SlowMotionSpeed;
+        }
     }
 }

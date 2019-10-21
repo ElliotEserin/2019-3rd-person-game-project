@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public Text dialogueText;
     private Queue<string> sentences;
 
     // Start is called before the first frame update
@@ -36,10 +38,12 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         Debug.Log(sentence);
+        dialogueText.text = sentence;
     }
 
     void EndDialogue()
     {
         Debug.Log("end conversation");
+        FindObjectOfType<DialogueTrigger>().DialogueCanvas.enabled = false;
     }
 }
