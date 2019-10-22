@@ -20,12 +20,6 @@ public class TP_Animator : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DetermineCurrentMoveDirection()
     {
         var forward = false;

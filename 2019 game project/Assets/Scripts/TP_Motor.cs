@@ -49,7 +49,7 @@ public class TP_Motor : MonoBehaviour
         ApplyGravity();
 
         //Move the Character in World Space
-        TP_Controller.CharacterController.Move(MoveVector * Time.deltaTime);
+        TP_Controller.CharacterController.Move(MoveVector * Time.deltaTime); //transition issue
 
     }
 
