@@ -9,8 +9,8 @@ public class TP_Camera : MonoBehaviour
     public Transform TargetLookAt;
     public float SlowMotionSpeed = 0.25f;
     public float Distance = 5f;
-    public float DistanceMin = 3f;
-    public float DistanceMax = 10;
+    public float DistanceMin = 1.5f;
+    public float DistanceMax = 8f;
     public float DistanceSmooth = 0.05f;
     public float DistanceResumeSmooth = 1f;
     public float X_MouseSensitivity = 5f;
