@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform respawnPoint;
+    public GameObject player;
+    public Transform respawnPointPosition;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         CharacterController controller = player.GetComponent<CharacterController>();
+            
 
         controller.enabled = false;
-        player.transform.position = respawnPoint.transform.position;
+        other.transform.position = other.GetComponent<RespawnSystem>().currentRespawnLocation.position;
         controller.enabled = true;
+        
     }
 
 
