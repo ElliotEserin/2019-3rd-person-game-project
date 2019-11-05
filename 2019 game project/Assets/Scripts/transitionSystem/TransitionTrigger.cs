@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TransitionTrigger : MonoBehaviour
 {
 
     public Canvas TransitionCanvas;
     public Vector3 CoordinatesToGoTo;
+    public Scene SceneToGoTo;
     public string LocationName;
 
     // Start is called before the first frame update
@@ -28,9 +30,19 @@ public class TransitionTrigger : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
+            if (SceneToGoTo == null) //travel somewhere else in scene
+            {
+                FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
 
-            TransitionCanvas.enabled = false;
+                TransitionCanvas.enabled = false;
+            }
+            else if(SceneToGoTo != null) //load new scene
+            {
+                SceneManager.LoadScene(SceneToGoTo.ToString());
+                FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
+
+                TransitionCanvas.enabled = false;
+            }
         }
     }
 

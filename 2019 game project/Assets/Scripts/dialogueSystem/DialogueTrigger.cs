@@ -32,6 +32,7 @@ public class DialogueTrigger : MonoBehaviour
     public void OnTriggerExit(Collider other) //hiding the dialogue UI
     {
         DialogueCanvas.enabled = false;
+        Destroy(this,0f);
     }
 
     public void TriggerDialogue()

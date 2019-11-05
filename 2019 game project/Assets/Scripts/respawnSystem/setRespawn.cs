@@ -19,9 +19,14 @@ public class SetRespawn : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        diamond.AddComponent<Rigidbody>();
-        diamond.GetComponent<diamondSpin>().enabled = false;
-        diamond.GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+        Rigidbody inst = diamond.GetComponent<Rigidbody>();
+
+        if (inst == null)
+        {
+            diamond.AddComponent<Rigidbody>();
+            diamond.GetComponent<diamondSpin>().enabled = false;
+            diamond.GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+        }
     }
 
 }
