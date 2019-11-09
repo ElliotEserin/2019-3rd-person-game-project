@@ -49,7 +49,7 @@ public class TP_Motor : MonoBehaviour
         ApplyGravity();
 
         //Move the Character in World Space
-        TP_Controller.CharacterController.Move(MoveVector * Time.deltaTime); //transition issue
+        TP_Controller.CharacterController.Move(MoveVector * Time.deltaTime); 
 
     }
 
@@ -121,4 +121,18 @@ public class TP_Motor : MonoBehaviour
 
         return moveSpeed;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "platform")
+        {
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        transform.parent = null;
+    }
+
 }
