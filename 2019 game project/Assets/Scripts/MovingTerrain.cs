@@ -21,7 +21,7 @@ public class MovingTerrain : MonoBehaviour
 
     void Start()
     {
-        originalPos = transform.position;
+        originalPos = transform.localPosition;
     }
 
 
@@ -40,18 +40,18 @@ public class MovingTerrain : MonoBehaviour
     {
         if (xDirection == 1)
         {
-            transform.position = transform.position + new Vector3(moveSpeed, 0, 0);
+            transform.localPosition = transform.localPosition + new Vector3(moveSpeed, 0, 0);
 
-            if(transform.position.x >= originalPos.x + xMax)
+            if(transform.localPosition.x >= originalPos.x + xMax)
             {
                 xDirection = -1;
             }
         }
         else if (xDirection == -1)
         {
-            transform.position = transform.position - new Vector3(moveSpeed, 0, 0);
+            transform.localPosition = transform.localPosition - new Vector3(moveSpeed, 0, 0);
 
-            if (transform.position.x <= originalPos.x - xMax)
+            if (transform.localPosition.x <= originalPos.x - xMax)
             {
                 xDirection = 1;
             }
@@ -62,18 +62,18 @@ public class MovingTerrain : MonoBehaviour
     {
         if (yDirection == 1)
         {
-            transform.position = transform.position + new Vector3(0, moveSpeed, 0);
+            transform.localPosition = transform.localPosition + new Vector3(0, moveSpeed, 0);
 
-            if (transform.position.y >= originalPos.y + yMax)
+            if (transform.localPosition.y >= originalPos.y + yMax)
             {
                 yDirection = -1;
             }
         }
         else if (yDirection == -1)
         {
-            transform.position = transform.position - new Vector3(0, moveSpeed, 0);
+            transform.localPosition = transform.localPosition - new Vector3(0, moveSpeed, 0);
 
-            if (transform.position.y <= originalPos.y - yMax)
+            if (transform.localPosition.y <= originalPos.y - yMax)
             {
                 yDirection = 1;
             }
@@ -84,18 +84,18 @@ public class MovingTerrain : MonoBehaviour
     {
         if (zDirection == 1)
         {
-            transform.position = transform.position + new Vector3(0, 0, moveSpeed);
+            transform.localPosition = transform.localPosition + new Vector3(0, 0, moveSpeed);
 
-            if (transform.position.z >= originalPos.z + zMax)
+            if (transform.localPosition.z >= originalPos.z + zMax)
             {
                 zDirection = -1;
             }
         }
         else if (zDirection == -1)
         {
-            transform.position = transform.position - new Vector3(0, 0, moveSpeed);
+            transform.localPosition = transform.localPosition - new Vector3(0, 0, moveSpeed);
 
-            if (transform.position.z <= originalPos.z - zMax)
+            if (transform.localPosition.z <= originalPos.z - zMax)
             {
                 zDirection = 1;
             }

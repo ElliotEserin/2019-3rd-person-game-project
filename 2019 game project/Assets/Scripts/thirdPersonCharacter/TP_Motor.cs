@@ -122,17 +122,4 @@ public class TP_Motor : MonoBehaviour
         return moveSpeed;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "platform")
-        {
-            transform.parent = other.transform;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        transform.parent = null;
-    }
-
 }

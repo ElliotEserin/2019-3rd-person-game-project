@@ -7,7 +7,6 @@ public class TP_Controller : MonoBehaviour
     public static CharacterController CharacterController;
     public static TP_Controller Instance;
 
-
     void Awake()
     {
         CharacterController = GetComponent("CharacterController") as CharacterController;
@@ -16,6 +15,12 @@ public class TP_Controller : MonoBehaviour
     }
 
     void Update()
+    {
+        if(transform.parent == null)
+            DoUpdate();
+    }
+
+    void DoUpdate()
     {
         if(Camera.main == null)
         {
@@ -55,4 +60,19 @@ public class TP_Controller : MonoBehaviour
     {
         TP_Motor.Instance.Jump();
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "platform")
+        {
+            transform.parent = other.transform;
+            DoUpdate();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        transform.parent = null;
+    }
+
 }
