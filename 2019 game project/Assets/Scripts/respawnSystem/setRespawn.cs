@@ -10,7 +10,7 @@ public class setRespawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<RespawnSystem>().currentRespawnLocation = transform;
+        if (other.gameObject.tag == "Player") { other.GetComponent<RespawnSystem>().currentRespawnLocation = transform; }
         diamond.GetComponent<diamondSpin>().rotation = new Vector3(0.25f,0.5f,0.25f);
 
         diamond.GetComponent<Light>().intensity = 0;
