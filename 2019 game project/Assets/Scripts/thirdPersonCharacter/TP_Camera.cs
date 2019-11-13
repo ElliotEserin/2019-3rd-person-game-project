@@ -242,11 +242,13 @@ public class TP_Camera : MonoBehaviour
 
     public void TimeSlowDown()
     {
-        Time.timeScale = 1;
-
         if(Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = SlowMotionSpeed;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 }

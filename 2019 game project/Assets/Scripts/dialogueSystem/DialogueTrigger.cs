@@ -16,7 +16,6 @@ public class DialogueTrigger : MonoBehaviour
     public void OnTriggerEnter(Collider other) //showing the dialogue UI
     {
         DialogueCanvas.enabled = true;
-
         TriggerDialogue();
     }
 
@@ -25,7 +24,6 @@ public class DialogueTrigger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             FindObjectOfType<DialogueManager>().DisplayNextSentence();
-
         }
     }
 
