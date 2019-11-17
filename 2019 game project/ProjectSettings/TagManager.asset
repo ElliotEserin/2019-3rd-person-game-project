@@ -8,6 +8,8 @@ TagManager:
   - transitionButton
   - water
   - platform
+  - powerCell
+  - emitter
   layers:
   - Default
   - TransparentFX

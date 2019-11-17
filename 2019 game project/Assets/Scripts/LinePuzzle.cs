@@ -6,14 +6,15 @@ public class LinePuzzle : MonoBehaviour
 {
     public float lineLength = 20f;
     public float ringCentre = 4f;
+    public float lineWidth;
     public GameObject emitter;
     public GameObject reciever;
+    public GameObject[] affectedObjects;
     public Material lineMaterial;
     public Color lineColour = new Color(1, 1, 1, 0.5f);
-    public float lineWidth;
-    public bool isActive = true;
 
     private bool isBlocked = true;
+    private bool wasBlocked = true;
     private LineRenderer line;
 
 
@@ -31,8 +32,7 @@ public class LinePuzzle : MonoBehaviour
 
     private void Update()
     {
-        if(isActive)
-            Raycasts();
+        Raycasts();
     }
 
     public void Raycasts()
@@ -49,14 +49,42 @@ public class LinePuzzle : MonoBehaviour
         {
             line.SetPosition(1, hit.point);
 
+            wasBlocked = isBlocked;
             isBlocked = true;
+
+            if (wasBlocked)
+            {
+                offEffect();
+            }
         }
         else
         {
             line.SetPosition(1, reciever.transform.position);
 
+            wasBlocked = isBlocked;
             isBlocked = false;
+
+            if(wasBlocked)
+            {
+                onEffect();
+            }
         }
 
+    }
+
+    public void onEffect()
+    {
+        for(int i = 0; i < affectedObjects.Length; i++)
+        {
+            affectedObjects[i].SetActive(true);
+        }
+    }
+
+    public void offEffect()
+    {
+        for (int i = 0; i < affectedObjects.Length; i++)
+        {
+            affectedObjects[i].SetActive(false);
+        }
     }
 }

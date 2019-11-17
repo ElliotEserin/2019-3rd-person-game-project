@@ -6,10 +6,12 @@ public class TP_Controller : MonoBehaviour
 {
     public static CharacterController CharacterController;
     public static TP_Controller Instance;
+    public static PuzzleController PuzzleController;
 
     void Awake()
     {
         CharacterController = GetComponent("CharacterController") as CharacterController;
+        PuzzleController = FindObjectOfType<PuzzleController>();
         Instance = this;
         TP_Camera.UseExistingOrCreateNewMainCamera();
     }
@@ -67,6 +69,21 @@ public class TP_Controller : MonoBehaviour
         {
             transform.parent = other.transform;
             DoUpdate();
+        }
+
+        else if (other.gameObject.tag == "powerCell")
+        {
+            Destroy(other.gameObject);
+            PuzzleController.cellPickup();
+        }
+
+        else if (other.gameObject.tag == "emitter")
+        {
+            if (PuzzleController.cellCount > 0)
+            {
+                PuzzleController.cellDeposit();
+                other.gameObject.GetComponent<LinePuzzle>().enabled = true;
+            }
         }
     }
 
