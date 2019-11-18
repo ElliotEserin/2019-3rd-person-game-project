@@ -6,12 +6,17 @@ using UnityEngine;
 public class MovingTerrain : MonoBehaviour
 {
     public bool moveOnX = false;
+    public bool flippedX = false;
     public float xMax;
     public bool moveOnY = false;
+    public bool flippedY = false;
     public float yMax;
     public bool moveOnZ = false;
+    public bool flippedZ = false;
     public float zMax;
     public float moveSpeed;
+    public bool rotation;
+    public float w = 1f;
     public Vector3 originalPos;
 
     int xDirection = -1;
@@ -22,18 +27,32 @@ public class MovingTerrain : MonoBehaviour
     void Start()
     {
         originalPos = transform.localPosition;
+        if (flippedX == true)
+        {
+            xDirection = 1;
+        }
+        if (flippedY == true)
+        {
+            yDirection = 1;
+        }
+        if (flippedZ == true)
+        {
+            zDirection = 1;
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if(moveOnX)
+        if (moveOnX)
             moveX();
-        if(moveOnY)
+        if (moveOnY)
             moveY();
-        if(moveOnZ)
+        if (moveOnZ)
             moveZ();
+        if (rotation)
+            rotate();
     }
 
     void moveX()
@@ -42,7 +61,7 @@ public class MovingTerrain : MonoBehaviour
         {
             transform.localPosition = transform.localPosition + new Vector3(moveSpeed, 0, 0);
 
-            if(transform.localPosition.x >= originalPos.x + xMax)
+            if (transform.localPosition.x >= originalPos.x + xMax)
             {
                 xDirection = -1;
             }
@@ -100,5 +119,10 @@ public class MovingTerrain : MonoBehaviour
                 zDirection = 1;
             }
         }
+    }
+
+    void rotate()
+    {
+        transform.Rotate(new Vector3(moveSpeed, 0, 0), Space.Self);
     }
 }

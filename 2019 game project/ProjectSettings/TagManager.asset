@@ -10,6 +10,7 @@ TagManager:
   - platform
   - powerCell
   - emitter
+  - obscurrence
   layers:
   - Default
   - TransparentFX

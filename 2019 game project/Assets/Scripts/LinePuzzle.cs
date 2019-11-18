@@ -6,15 +6,15 @@ public class LinePuzzle : MonoBehaviour
 {
     public float lineLength = 20f;
     public float ringCentre = 4f;
-    public float lineWidth;
+    public float lineWidth = 0.1f;
     public GameObject emitter;
     public GameObject reciever;
     public GameObject[] affectedObjects;
     public Material lineMaterial;
     public Color lineColour = new Color(1, 1, 1, 0.5f);
 
-    private bool isBlocked = true;
-    private bool wasBlocked = true;
+    private bool isBlocked = false;
+    private bool wasBlocked = false;
     private LineRenderer line;
 
 
@@ -52,7 +52,7 @@ public class LinePuzzle : MonoBehaviour
             wasBlocked = isBlocked;
             isBlocked = true;
 
-            if (wasBlocked)
+            if (wasBlocked == false)
             {
                 offEffect();
             }
@@ -64,7 +64,7 @@ public class LinePuzzle : MonoBehaviour
             wasBlocked = isBlocked;
             isBlocked = false;
 
-            if(wasBlocked)
+            if (wasBlocked == true)
             {
                 onEffect();
             }

@@ -79,11 +79,16 @@ public class TP_Controller : MonoBehaviour
 
         else if (other.gameObject.tag == "emitter")
         {
-            if (PuzzleController.cellCount > 0)
+            if (PuzzleController.cellCount > 0 && other.gameObject.GetComponent<LinePuzzle>() != null)
             {
                 PuzzleController.cellDeposit();
                 other.gameObject.GetComponent<LinePuzzle>().enabled = true;
             }
+        }
+
+        else if(other.gameObject.tag == "obscurrence")
+        {
+            Destroy(other.gameObject);
         }
     }
 
