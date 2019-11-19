@@ -16,6 +16,9 @@ public class MovingTerrain : MonoBehaviour
     public float zMax;
     public float moveSpeed;
     public bool rotation;
+    public float rotationX;
+    public float rotationY;
+    public float rotationZ;
     public float w = 1f;
     public Vector3 originalPos;
 
@@ -123,6 +126,6 @@ public class MovingTerrain : MonoBehaviour
 
     void rotate()
     {
-        transform.Rotate(new Vector3(moveSpeed, 0, 0), Space.Self);
+        transform.Rotate(new Vector3(rotationX, rotationY, rotationZ), Space.Self);
     }
 }

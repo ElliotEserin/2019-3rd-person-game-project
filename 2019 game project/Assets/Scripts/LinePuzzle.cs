@@ -49,10 +49,9 @@ public class LinePuzzle : MonoBehaviour
         {
             line.SetPosition(1, hit.point);
 
-            wasBlocked = isBlocked;
             isBlocked = true;
 
-            if (wasBlocked == false)
+            if (isBlocked == true)
             {
                 offEffect();
             }
@@ -61,10 +60,9 @@ public class LinePuzzle : MonoBehaviour
         {
             line.SetPosition(1, reciever.transform.position);
 
-            wasBlocked = isBlocked;
             isBlocked = false;
 
-            if (wasBlocked == true)
+            if (isBlocked == false)
             {
                 onEffect();
             }

@@ -9,6 +9,7 @@ public class TransitionTrigger : MonoBehaviour
 
     public Canvas TransitionCanvas;
     public Vector3 CoordinatesToGoTo;
+    public bool GoToNewScene = false;
     public Scene SceneToGoTo;
     public string LocationName;
 
@@ -30,15 +31,16 @@ public class TransitionTrigger : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            if (SceneToGoTo == null) //travel somewhere else in scene
+            if (SceneToGoTo != null && GoToNewScene) //load new scene
             {
+                SceneManager.LoadScene(SceneToGoTo.ToString());
                 FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
 
                 TransitionCanvas.enabled = false;
             }
-            else if(SceneToGoTo != null) //load new scene
+            else //translate player in current scene
             {
-                SceneManager.LoadScene(SceneToGoTo.ToString());
+
                 FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
 
                 TransitionCanvas.enabled = false;
