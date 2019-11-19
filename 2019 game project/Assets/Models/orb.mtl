@@ -1,0 +1,12 @@
+# Blender MTL File: 'orbital.blend'
+# Material Count: 1
+
+newmtl Material
+Ns 462.250003
+Ka 0.641667 0.641667 0.641667
+Kd 0.014896 0.020379 0.011671
+Ks 0.558333 0.558333 0.558333
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
