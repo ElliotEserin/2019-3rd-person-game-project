@@ -11,6 +11,8 @@ TagManager:
   - powerCell
   - emitter
   - obscurrence
+  - bouncePad
+  - fade
   layers:
   - Default
   - TransparentFX

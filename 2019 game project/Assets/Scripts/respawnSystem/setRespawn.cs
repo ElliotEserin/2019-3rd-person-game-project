@@ -6,7 +6,12 @@ using UnityEngine.Rendering;
 public class setRespawn : MonoBehaviour
 {
 
-    public GameObject diamond;
+    GameObject diamond;
+
+    private void Start()
+    {
+        diamond = transform.Find("respawnDiamond").gameObject;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -8,6 +8,6 @@ public class RespawnSystem : MonoBehaviour
 
     private void Start()
     {
-        currentRespawnLocation = GameObject.Find("setRespawnTrigger").transform;
+        currentRespawnLocation = GameObject.Find("setRespawnTriggerOne").transform;
     }
 }

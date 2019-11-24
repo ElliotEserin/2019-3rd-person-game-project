@@ -58,9 +58,25 @@ public class TP_Controller : MonoBehaviour
         }
     }
 
-    void Jump()
+    public void Jump()
     {
         TP_Motor.Instance.Jump();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "bouncePad")
+        {
+            var oldJumpSpeed = TP_Motor.Instance.JumpSpeed;
+            TP_Motor.Instance.JumpSpeed = other.gameObject.GetComponent<BouncePad>().newJumpSpeed;
+
+            transform.parent = other.gameObject.transform;
+            Jump();
+            TP_Motor.Instance.UpdateMotor();
+            Debug.Log("jumped: at speed " + TP_Motor.Instance.JumpSpeed);
+
+            TP_Motor.Instance.JumpSpeed = oldJumpSpeed;
+        }
     }
 
     private void OnTriggerStay(Collider other)

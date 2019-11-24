@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -10,13 +11,15 @@ public class TransitionTrigger : MonoBehaviour
     public Canvas TransitionCanvas;
     public Vector3 CoordinatesToGoTo;
     public bool GoToNewScene = false;
-    public Scene SceneToGoTo;
+    public string SceneToGoTo;
     public string LocationName;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         TransitionCanvas.enabled = false;
+        animator = GameObject.FindGameObjectWithTag("fade").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,26 +34,37 @@ public class TransitionTrigger : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            if (SceneToGoTo != null && GoToNewScene) //load new scene
-            {
-                SceneManager.LoadScene(SceneToGoTo.ToString());
-                FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
-
-                TransitionCanvas.enabled = false;
-            }
-            else //translate player in current scene
-            {
-
-                FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
-
-                TransitionCanvas.enabled = false;
-            }
+            OnTransition();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         TransitionCanvas.enabled = false;
+    }
+
+    public void FadeToLevel()
+    {
+        animator.SetTrigger("fadeOut");
+    }
+
+    public void OnTransition()
+    {
+        if (GoToNewScene) //load new scene
+        {
+            FadeToLevel();
+            SceneManager.LoadScene(SceneToGoTo);
+            FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
+
+            TransitionCanvas.enabled = false;
+        }
+        else //translate player in current scene
+        {
+
+            FindObjectOfType<TransitionManager>().TranslatePlayer(CoordinatesToGoTo);
+
+            TransitionCanvas.enabled = false;
+        }
     }
 
 }

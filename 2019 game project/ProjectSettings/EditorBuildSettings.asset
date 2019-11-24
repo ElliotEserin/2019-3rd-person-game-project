@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/The Beginning.unity
     guid: 9060f917c3363b640a9fdb33c2141aa7
+  - enabled: 1
+    path: Assets/Scenes/puzzle2.unity
+    guid: b97db7fba703ae241a591020d50e6ee6
   m_configObjects: {}

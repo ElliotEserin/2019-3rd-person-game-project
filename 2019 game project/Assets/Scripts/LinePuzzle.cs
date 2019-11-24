@@ -72,9 +72,9 @@ public class LinePuzzle : MonoBehaviour
 
     public void onEffect()
     {
-        for(int i = 0; i < affectedObjects.Length; i++)
+        for (int i = 0; i < affectedObjects.Length; i++)
         {
-            affectedObjects[i].SetActive(true);
+            if (affectedObjects[i] != null) { affectedObjects[i].SetActive(true); }
         }
     }
 
