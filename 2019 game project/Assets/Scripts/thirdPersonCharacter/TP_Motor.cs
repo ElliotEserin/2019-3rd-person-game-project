@@ -14,12 +14,17 @@ public class TP_Motor : MonoBehaviour
     public float Gravity = 21f;
     public float TerminalVelocity = 20f;
 
+
     public Vector3 MoveVector { get; set; }
     public float VerticalVelocity { get; set; }
+
+    TP_Controller TP_Controller;
+
 
     void Awake()
     {
         Instance = this;
+        TP_Controller = FindObjectOfType<TP_Controller>();
     }
 
     public void UpdateMotor()
@@ -116,8 +121,9 @@ public class TP_Motor : MonoBehaviour
             case TP_Animator.Direction.RightBackward:
                 moveSpeed = BackwardSpeed;
                 break;
-
         }
+
+
 
         return moveSpeed;
     }

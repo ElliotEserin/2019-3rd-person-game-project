@@ -8,6 +8,8 @@ public class TP_Controller : MonoBehaviour
     public static TP_Controller Instance;
     public static PuzzleController PuzzleController;
 
+    bool inControl = true;
+
     void Awake()
     {
         CharacterController = GetComponent("CharacterController") as CharacterController;
@@ -18,7 +20,7 @@ public class TP_Controller : MonoBehaviour
 
     void Update()
     {
-        if(transform.parent == null)
+        if (transform.parent == null)
             DoUpdate();
     }
 
@@ -70,12 +72,13 @@ public class TP_Controller : MonoBehaviour
             var oldJumpSpeed = TP_Motor.Instance.JumpSpeed;
             TP_Motor.Instance.JumpSpeed = other.gameObject.GetComponent<BouncePad>().newJumpSpeed;
 
-            transform.parent = other.gameObject.transform;
+            inControl = false;
             Jump();
             TP_Motor.Instance.UpdateMotor();
             Debug.Log("jumped: at speed " + TP_Motor.Instance.JumpSpeed);
 
             TP_Motor.Instance.JumpSpeed = oldJumpSpeed;
+            inControl = true;
         }
     }
 

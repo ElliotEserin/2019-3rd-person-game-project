@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TP_Animator : MonoBehaviour
 {
+
+    public AudioClip runSound;
+    public AudioSource audio;
+
     public enum Direction
     {
         Stationary, Forward, Backward, Left, Right,
@@ -60,6 +64,18 @@ public class TP_Animator : MonoBehaviour
             MoveDirection = Direction.Right;
         else
             MoveDirection = Direction.Stationary;
+
+
+        if (forward)
+        {
+            Debug.Log("is running");
+            audio.clip = runSound;
+            audio.Play();
+        }
+        else
+        {
+            audio.clip = null;
+        }
 
     }
 }
