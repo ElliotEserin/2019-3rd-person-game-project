@@ -5,7 +5,7 @@ using UnityEngine;
 public class TP_Animator : MonoBehaviour
 {
 
-    public AudioClip runSound;
+    public AudioClip runSound, jumpSound;
     public AudioSource audio;
 
     public enum Direction
@@ -18,10 +18,13 @@ public class TP_Animator : MonoBehaviour
 
     public Direction MoveDirection { get; set; }
 
+    CharacterController cc;
+
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+        cc = GetComponent<CharacterController>();
     }
 
     public void DetermineCurrentMoveDirection()
@@ -66,15 +69,18 @@ public class TP_Animator : MonoBehaviour
             MoveDirection = Direction.Stationary;
 
 
-        if (forward)
+        if (forward && cc.isGrounded)
         {
-            Debug.Log("is running");
-            audio.clip = runSound;
-            audio.Play();
+            if (audio.isPlaying == false)
+            {
+                Debug.Log("is running");
+                audio.clip = runSound;
+                audio.Play();
+            }
         }
-        else
+        else if(audio.clip == runSound)
         {
-            audio.clip = null;
+            audio.Stop();
         }
 
     }

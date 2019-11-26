@@ -8,6 +8,8 @@ public class TP_Controller : MonoBehaviour
     public static TP_Controller Instance;
     public static PuzzleController PuzzleController;
 
+
+
     bool inControl = true;
 
     void Awake()
@@ -16,6 +18,7 @@ public class TP_Controller : MonoBehaviour
         PuzzleController = FindObjectOfType<PuzzleController>();
         Instance = this;
         TP_Camera.UseExistingOrCreateNewMainCamera();
+
     }
 
     void Update()
@@ -63,6 +66,7 @@ public class TP_Controller : MonoBehaviour
     public void Jump()
     {
         TP_Motor.Instance.Jump();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,6 +93,7 @@ public class TP_Controller : MonoBehaviour
             transform.parent = other.transform;
             DoUpdate();
         }
+       
 
         else if (other.gameObject.tag == "powerCell")
         {

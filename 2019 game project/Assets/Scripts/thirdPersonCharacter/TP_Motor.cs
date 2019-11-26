@@ -19,12 +19,14 @@ public class TP_Motor : MonoBehaviour
     public float VerticalVelocity { get; set; }
 
     TP_Controller TP_Controller;
+    TP_Animator Animator;
 
 
     void Awake()
     {
         Instance = this;
         TP_Controller = FindObjectOfType<TP_Controller>();
+        Animator = GetComponent<TP_Animator>();
     }
 
     public void UpdateMotor()
@@ -75,6 +77,9 @@ public class TP_Motor : MonoBehaviour
         if(TP_Controller.CharacterController.isGrounded)
         {
             VerticalVelocity = JumpSpeed;
+
+            Animator.audio.clip = Animator.jumpSound;
+            Animator.audio.Play();
         }
     }
 

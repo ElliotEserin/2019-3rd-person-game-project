@@ -13,6 +13,7 @@ TagManager:
   - obscurrence
   - bouncePad
   - fade
+  - fallingPlatform
   layers:
   - Default
   - TransparentFX
