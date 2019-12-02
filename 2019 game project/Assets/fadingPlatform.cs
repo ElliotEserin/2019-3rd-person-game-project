@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fallingPlatform : MonoBehaviour
+public class fadingPlatform : MonoBehaviour
 {
     public float alphaDecreaseRate = 0.5f;
 
-    MeshRenderer render;
-    Color colour;
+    public MeshRenderer render;
+    public Color colour;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class fallingPlatform : MonoBehaviour
         
         if(colour.a <= 0)
         {
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

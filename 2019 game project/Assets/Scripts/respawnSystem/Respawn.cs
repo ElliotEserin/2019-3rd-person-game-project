@@ -7,11 +7,13 @@ public class Respawn : MonoBehaviour
     public GameObject player;
     public Transform respawnPointPosition;
     CharacterController controller;
+    GameObject[] fadingPlatforms;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         controller = player.GetComponent<CharacterController>();
+        fadingPlatforms = GameObject.FindGameObjectsWithTag("fadingPlatform");
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,6 +23,16 @@ public class Respawn : MonoBehaviour
             controller.enabled = false;
             other.transform.position = other.GetComponent<RespawnSystem>().currentRespawnLocation.position;
             controller.enabled = true;
+
+            for (int i = 0; i < fadingPlatforms.Length; i++)
+            {
+                fadingPlatforms[i].SetActive(true);
+                var renderer = fadingPlatforms[i].GetComponent<fadingPlatform>();
+                renderer.colour.a = 1;
+                renderer.render.material.color = renderer.colour;
+            }
+
+             
         }
         else
         {
