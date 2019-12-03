@@ -3168,7 +3168,7 @@ PrefabInstance:
     - target: {fileID: 403643035742412764, guid: d09435e3082b0e04f9c59b8151666b38,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2096632274726129542, guid: d09435e3082b0e04f9c59b8151666b38,
         type: 3}
@@ -4521,17 +4521,17 @@ PrefabInstance:
     - target: {fileID: 4017402960894575906, guid: 6f5613dc279fdc5419ffabf28d9b6e8f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 76.5
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 4017402960894575906, guid: 6f5613dc279fdc5419ffabf28d9b6e8f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -317.6
+      value: 84.2
       objectReference: {fileID: 0}
     - target: {fileID: 4017402960894575906, guid: 6f5613dc279fdc5419ffabf28d9b6e8f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -117.8
+      value: 42.8
       objectReference: {fileID: 0}
     - target: {fileID: 4017402960894575906, guid: 6f5613dc279fdc5419ffabf28d9b6e8f,
         type: 3}
@@ -8257,6 +8257,16 @@ PrefabInstance:
         type: 3}
       propertyPath: LocationName
       value: orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779665817546256234, guid: 1eaab0f1c4c81fc41b72fdb777967113,
+        type: 3}
+      propertyPath: GoToNewScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779665817546256234, guid: 1eaab0f1c4c81fc41b72fdb777967113,
+        type: 3}
+      propertyPath: SceneToGoTo
+      value: orbInside
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eaab0f1c4c81fc41b72fdb777967113, type: 3}

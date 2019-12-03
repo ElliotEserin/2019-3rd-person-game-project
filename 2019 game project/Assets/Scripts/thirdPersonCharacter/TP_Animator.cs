@@ -7,6 +7,7 @@ public class TP_Animator : MonoBehaviour
 
     public AudioClip runSound, jumpSound;
     public AudioSource audio;
+    public Animator animator;
 
     public enum Direction
     {
@@ -25,6 +26,7 @@ public class TP_Animator : MonoBehaviour
     {
         Instance = this;
         cc = GetComponent<CharacterController>();
+        animator = FindObjectOfType<Animator>();
     }
 
     public void DetermineCurrentMoveDirection()
@@ -76,12 +78,17 @@ public class TP_Animator : MonoBehaviour
                 Debug.Log("is running");
                 audio.clip = runSound;
                 audio.Play();
+                //animator.Play("run");
             }
         }
         else if(audio.clip == runSound)
         {
             audio.Stop();
         }
+        //else if(MoveDirection == Direction.Stationary)
+        //{
+        //    animator.Play("idle");
+        //}
 
     }
 }
