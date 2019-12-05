@@ -84,13 +84,17 @@ public class TP_Controller : MonoBehaviour
             TP_Motor.Instance.JumpSpeed = oldJumpSpeed;
             inControl = true;
         }
+
+        if(other.gameObject.tag == "platform")
+        {
+            transform.parent = other.transform;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "platform")
-        {
-            transform.parent = other.transform;
+        {   
             DoUpdate();
         }
        

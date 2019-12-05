@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void Start()
     {
+        DialogueCanvas = GameObject.Find("DialogueCanvas").GetComponent<Canvas>();
         DialogueCanvas.enabled = false;
     }
 
