@@ -7,6 +7,7 @@ public class TP_Controller : MonoBehaviour
     public static CharacterController CharacterController;
     public static TP_Controller Instance;
     public static PuzzleController PuzzleController;
+    public Animator animator;
 
 
 
@@ -66,7 +67,7 @@ public class TP_Controller : MonoBehaviour
     public void Jump()
     {
         TP_Motor.Instance.Jump();
-
+        
     }
 
     private void OnTriggerEnter(Collider other)

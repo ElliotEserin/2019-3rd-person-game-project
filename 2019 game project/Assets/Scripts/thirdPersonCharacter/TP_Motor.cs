@@ -13,6 +13,7 @@ public class TP_Motor : MonoBehaviour
     public float JumpSpeed = 6f;
     public float Gravity = 21f;
     public float TerminalVelocity = 20f;
+    public Animator animator;
 
 
     public Vector3 MoveVector { get; set; }
@@ -33,6 +34,10 @@ public class TP_Motor : MonoBehaviour
     {
         SnapAlignCharacterWithCamera();
         ProcessMotion();
+        if(MoveVector.y < 0)
+        {
+            animator.SetTrigger("landed");
+        }
     }
 
     void ProcessMotion()
@@ -80,6 +85,7 @@ public class TP_Motor : MonoBehaviour
 
             Animator.audio.clip = Animator.jumpSound;
             Animator.audio.Play();
+            animator.SetTrigger("jumped");
         }
     }
 

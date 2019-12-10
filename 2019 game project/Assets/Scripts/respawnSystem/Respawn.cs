@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    public GameObject player;
     public Transform respawnPointPosition;
+    GameObject player;
     CharacterController controller;
     GameObject[] fadingPlatforms;
 
