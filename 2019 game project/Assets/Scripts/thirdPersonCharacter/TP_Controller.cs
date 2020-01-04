@@ -72,6 +72,8 @@ public class TP_Controller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("entered trigger");
+
         if(other.gameObject.tag == "bouncePad")
         {
             var oldJumpSpeed = TP_Motor.Instance.JumpSpeed;

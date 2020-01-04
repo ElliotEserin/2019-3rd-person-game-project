@@ -80,16 +80,16 @@ public class TP_Animator : MonoBehaviour
                 audio.Play();
                 
             }
-            animator.SetTrigger("running");
+            //animator.SetTrigger("running");
         }
         else if(audio.clip == runSound)
         {
             audio.Stop();
         }
-        else if(MoveDirection == Direction.Stationary)
-        {
-            animator.SetTrigger("stopped");
-        }
+        //else if(MoveDirection == Direction.Stationary)
+        //{
+        //    animator.SetTrigger("stopped");
+        //}
 
     }
 }

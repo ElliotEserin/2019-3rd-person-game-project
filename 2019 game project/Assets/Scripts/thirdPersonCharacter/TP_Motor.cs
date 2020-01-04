@@ -36,7 +36,7 @@ public class TP_Motor : MonoBehaviour
         ProcessMotion();
         if(MoveVector.y < 0)
         {
-            animator.SetTrigger("landed");
+            //animator.SetTrigger("landed");
         }
     }
 
@@ -85,7 +85,7 @@ public class TP_Motor : MonoBehaviour
 
             Animator.audio.clip = Animator.jumpSound;
             Animator.audio.Play();
-            animator.SetTrigger("jumped");
+            //animator.SetTrigger("jumped");
         }
     }
 
